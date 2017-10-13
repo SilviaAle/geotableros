@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SESION 2</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="css/estilos.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+    <script src="js/funciones.js"></script>
+</head>
+<body>
+    
+    <nav>
+        <i class="fa fa-angle-left" aria-hidden="true" onclick="navegar('index.html')"></i>
+        <h1 id="titulo-tablero">NOMBRE DEL TABLERO</h1>
+    </nav>
+    
+    <section>
+        <h1>Mis lugares</h1>
+        <div class="tableros">
+            <div class="lugar-nuevo tablero" onclick="navegar('guardarLugar.html')">
+                <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                <h1>Nuevo Lugar</h1>
+            </div>
+        </div>
+    </section>
+    
+<script>
+    //EVENTO, FUNCION, BURBUJAS DE JS
+    window.addEventListener('load', cargarLugares, true);
+    
+    function cargarLugares(){
+        //SACAR LUGARES DE LA BASE DE DATOS
+        lugares = new XMLHttpRequest();
+        idTablero = localStorage.getItem('idTablero');
+        lugares.open('GET','php/lugaresTablero.php?id='+idTablero);
+        lugares.send();
+        lugares.onreadystatechange = function(){
+            if(lugares.readyState == 4 && lugares.status == 200){
+                //IMPRIMIR LUGARES
+                tableros = document.getElementById('tableros');
+                JSONLugares = JSON.parse(lugares.responseText);
+                //console.log(JSONLugares);
+                for(i=0;i<JSONLugares.length;i++){
+                    tableros.innerHTML += "<div class='tablero' onclick='navegar(\"lugar.html\",\"" +
+                        JSONLugares[i].id +
+                        "\")'>"+
+                        "<i class='fa fa-thumb-tack' aria-hidden='true'></i>"+
+                        "<h1>"+
+                        JSONLugares[i].nombre +
+                        "</h1></div>";
+                    }
+            }
+        }
+    }
+        
+</script>
+    
+</body>
+</html>

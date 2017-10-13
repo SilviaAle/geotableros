@@ -1,0 +1,180 @@
+:root{
+    --color-base: #e74c3c;
+    --fondo-oscuro: #f0f7f4;
+    --fondo-claro: #fffffb;
+    --color-letra: rgba(0,0,0,.6);
+    --color-contraste: #FFc5Ac;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto';
+}
+
+nav{
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 60px;
+    background-color: var(--color-base);
+    text-align: center;
+    color: white;
+    font-weight: 300;
+    line-height: 60px;
+    z-index: 9999999999;
+}
+
+    nav>i{
+        width: 30px;
+        height: 60px;
+        float: left;
+        line-height: 60px !important;
+        text-align: left;
+        padding-left: 15px;
+        font-size: 1.8em !important;
+    }
+
+    nav>h1{
+        float: left;
+        font-size: 1.2em;
+        font-weight: 300;
+
+    }
+
+section{
+    position: absolute;
+    top: 60px;
+    left: 0px;
+    height: calc(100% - 60px);
+    background: var(--fondo-oscuro);
+    width: 100%;
+}
+
+    .tablero-nuevo{
+        width: 100%;
+        float: left;
+        height: 100px;
+        margin-bottom: 10px;
+        text-align: center;
+        background: var(--color-contraste);
+        color: var(--color-base);
+        line-height: 100px;
+        font-size: 1.1em;
+    }
+
+        .tablero-nuevo>input{
+            width: 100%;
+            background: rgba(255,255,255,.1);
+            outline: none;
+            border: none;
+            text-align: center;
+            font-size: 1.2em;
+            height: 80px;
+            color: var(--color-base);
+        }
+
+    section>h1{
+        width: calc(100% - 20px);
+        color: var(--color-letra);
+        float: left;
+        margin: 10px 10px;
+        text-transform: uppercase;
+        font-size: 1em;
+    }
+
+        #tableros{
+            width: 100%;
+            float: left;
+        }
+
+            .tablero{
+                width: calc(100% - 20px);
+                float: left;
+                margin: 10px;
+                background: var(--fondo-claro);
+                height: 60px;
+                border-radius: 3px;
+                box-shadow: 0px 4px 4px -2px rgba(0,0,0,.05);
+            }
+
+                .tablero>h1, .tablero>i{
+                    float: left;
+                    line-height: 60px;
+                    margin-left: 10px;
+                }
+
+                .tablero>i{
+                    color: white;
+                    background: var(--color-contraste);
+                    width: 40px;
+                    height: 40px;
+                    line-height: 40px;
+                    text-align: center;
+                    margin-top: 10px;
+                    border-radius: 50%;
+                    font-size: 1.3em;
+                }
+
+                .tablero>h1{
+                    font-size: 1.2em;
+                    font-weight: 300;
+                }
+
+#mapa{
+    width: 100%;
+    float: left;
+    height: 250px;
+    background: var(--color-contraste);
+}
+
+.ficha{
+    width: calc(100% - 20px);
+    margin-left: 10px;
+    /*margin-top: -40px;*/
+    float: left;
+    background: var(--fondo-claro);
+    border-radius: 3px;
+    box-shadow: 0px 4px 12px -4px rgba(0,0,0,.3);
+    position: absolute;
+    top: 200px;
+}
+
+    .ficha input{
+        float: left;
+        width: calc(100% - 10px);
+        margin: 10px 5px;
+        height: 50px;
+        font-size: 1em;
+        border: none;
+        border-bottom: 1px solid var(--color-base);
+        outline: none;
+    }
+
+    .ficha textarea{
+        float: left;
+        width: calc(100% - 10px);
+        margin: 10px 5px;
+        height: 50px;
+        font-size: 1em;
+        border: none;
+        border-bottom: 1px solid var(--color-base);
+        outline: none;
+        resize: none;
+    }
+
+    .ficha button{
+        float: right;
+        width: calc(50% - 20px);
+        margin-right: 10px;
+        background: var(--color-base);
+        color: white;
+        height: 40px;
+        font-size: 1em;
+        border: none;
+        border-radius: 3px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        outline: none;
+    }

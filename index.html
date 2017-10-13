@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SESION 2</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="css/estilos.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+    <script src="js/funciones.js"></script>
+</head>
+<body>
+    
+    <nav>
+        <h1>GEOTABLEROS</h1>
+    </nav>
+    
+    <section>
+        <div class="tablero-nuevo">
+            <div onclick="nuevoTablero()">
+                <i class="fa fa-plus-square-o" aria-hidden="true"></i>CREAR TABLERO
+            </div>
+        </div>
+        
+        <h1>Mis tableros</h1>
+        <div id="tableros">
+            <div class="tablero" onclick="navegar('tablero.html')">
+                <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+                <h1>Nombre del Tablero</h1>
+            </div>
+        </div>
+    </section>
+    
+</body>
+    
+<script>
+    //EVENTO, FUNCION, BURBUJAS DE JS
+    window.addEventListener('load', cargarLugares, true);
+    
+    function cargarLugares(){
+        //SACAR LUGARES DE LA BASE DE DATOS
+        lugares = new XMLHttpRequest();
+        lugares.open('GET','php/lugares.php');
+        lugares.send();
+        lugares.onreadystatechange = function(){
+            if(lugares.readyState == 3 && lugares.status == 200){
+                //CARGANDO
+                document.getElementById('tableros').innerHTML = "CARGANDO...";
+            }
+            if(lugares.readyState == 4 && lugares.status == 200){
+                //IMPRIMIR LUGARES
+                tableros = document.getElementById('tableros');
+                JSONLugares = JSON.parse(lugares.responseText);
+                console.log(JSONLugares);
+                tableros.innerHTML = "";
+                for(i=0;i<JSONLugares.length;i++){
+                    tableros.innerHTML += "<div class='tablero' onclick='navegar(\"tablero.html\",\"" +
+                        JSONLugares[i].id +
+                        "\")'>"+
+                        "<i class='fa fa-thumb-tack' aria-hidden='true'></i>"+
+                        "<h1>"+
+                        JSONLugares[i].nombre +
+                        "</h1></div>";
+                    }
+            }
+        }
+    }
+        
+</script>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SESION 2</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="css/estilos.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+    <script src="js/funciones.js"></script>
+</head>
+<body>
+    
+    <nav>
+        <i class="fa fa-angle-left" aria-hidden="true" onclick="navegar('tablero.html')"></i>
+        <h1>Nuevo Lugar</h1>
+    </nav>
+    
+    <section>
+        <div id="mapa"></div>
+        
+        <div class="ficha">
+            <input type="text" placeholder="Nombre del Lugar" id="nombre">
+            <input type="number" placeholder="Precio" id="precio">
+            <textarea placeholder="¿Qué hay en este lugar?" id="descripcion"></textarea>
+            <input type="text" placeholder="¿Qué tipo de lugar es?" id="categoria">
+            <button onclick="guardarLugar()">LISTO!</button>
+        </div>
+    </section>
+</body>
+    
+<script>    
+    function initMap() {
+        var miLugar = {lat: latitud, lng: longitud};
+        var miMapa = new google.maps.Map(document.getElementById('mapa'), {
+            zoom: 18,
+            streetViewControl: false,
+            fullscreenControl: false,
+            mapTypeControl: false,
+            zoomControl: false,
+            center: miLugar
+        });
+        var miMarcador = new google.maps.Marker({
+            position: miLugar,
+            draggable: true,
+            animation: google.maps.Animation.DROP,
+            map: miMapa
+        });
+      }
+</script>
+    
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJnPmt-0L5e0trJXWk4K2y1VtAHT_S6WA">
+    </script>
+    
+    
+</html>
